@@ -1,0 +1,22 @@
+<%- include ('partials/header') -%>
+
+    <div class="ui thee column container" >
+        <div class="row">
+        <% portal.forEach(function(article){ %>
+            <div class=" ui card">
+                <div class="ui main container " >
+                    <div class="ui top attacheed">
+                        <a href="/news/<%= article._id %>" class="ui image"> 
+                            <h3 class="display-6"><%= article.title.substring(0,100)%>...</h3> 
+                            <img class="main" src="<%= article.image %>"  >
+                        </a> 
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+        </div>
+    </div>
+
+<%- include ('partials/footer') -%>
+
+

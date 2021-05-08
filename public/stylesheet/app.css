@@ -1,0 +1,111 @@
+body{
+    background-image: url("background.jpg") ;
+    height: 100%;
+}
+
+nav{
+    padding-bottom: 5.0em;
+}
+
+.i.icon {
+    font-size: 1.5em;
+}
+
+.form{
+    width: 275px; 
+    margin: 15px auto 20px auto; 
+    text-align: center;
+}
+
+.login{
+	padding: 12px;
+	border: 2px solid #3a8a86; 
+	border-radius: 10%;
+	width: 310px; 
+    margin: 15px auto 20px auto; 
+    text-align: center;
+}
+
+.input{
+    width: 260px;
+    padding: 5px; 
+    margin: 10px; 
+} 
+
+.input:hover{
+    width: 270px;
+    height: 35px;
+    padding: 5px; 
+    margin: 10px 0; 
+   box-shadow: 10px 10px 5px #888888; ;
+   flex: auto; 
+}
+
+.radio{
+    margin: 10px;
+} 
+
+.close{
+	margin: 10px 0 0 320px;
+	cursor: pointer;
+	border: 1px solid #ccc; 
+	padding: 2px; 
+	background: #ccc;
+} 
+
+.close:hover{
+    background: #fff;
+} 
+
+.content {
+    min-height: calc(89vh - 50px);
+}
+.login {
+    background: #888888;
+}
+.footer {
+    padding: 5em 0em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.folder{
+    border: 5px groove rgb(219, 156, 74);
+}
+
+.li{
+    margin-right: spacer !important;
+}
+
+img.main{
+    height: 35em;
+    width: 50em;
+    margin: 5px 5px;
+	padding: 20px 20px;
+}
+ 
+img.photo{
+    height: 35em;
+    width: 45em;
+    margin: 5px 5px;
+	padding: 20px 20px;
+}
+.ui.card{
+    width: 50em;
+    height: 40em;
+    margin: 5em 5em;
+}
+
+.header{
+    text-align: center;
+}
+
+.style{
+    width: 30%;
+    margin: 20px auto;
+}
+
+h3{
+    color: black;
+}
