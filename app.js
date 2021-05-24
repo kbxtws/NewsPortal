@@ -36,7 +36,7 @@ mongoose.connect(
        process.exit(1)
     });
 
-seedDB();
+//seedDB();
 app.set("view engine", "ejs");
 app.set('views','views');
 
@@ -59,6 +59,10 @@ passport.use(new LocalStrategy (User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req,res,next){
+    res.locals.currentUser = req.user;
+    next();
+});
 //
 
 app.get("/", function(req,res){
@@ -66,7 +70,7 @@ app.get("/", function(req,res){
 });
 
 app.get("/portal", function(req,res){
-    console.log (req.user);
+    console.log (res.locals.currentUser);
     Article.find({},function(err, portal){
         if(err){
             console.log(err);            
@@ -92,7 +96,7 @@ app.get("/news/:id/comments/new", isLoggedIn, function(req,res){
         if(err){
             console.log(err);
         } else {
-            res.render( "comments/new", {article: Article});
+            res.render( "comments/new", {article: article});
         };
     });
 });
@@ -103,10 +107,13 @@ app.get("/news/:id/comments/new", isLoggedIn, function(req,res){
             console.log(err);
             res.redirect("/news/:id");
         } else {
-            Comment.create(req.bobe.comment, function(err, comment){
+            Comment.create(req.boby.comment, function(err, comment){
                 if(err){
                     console.log(err);
                 } else {
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save
                     Article.comments.push(comment);
                     Article.save();
                     res.redirect("/news/" + article._id);
@@ -115,13 +122,13 @@ app.get("/news/:id/comments/new", isLoggedIn, function(req,res){
         };
     });
  });
+
 //AUTH
 app.get("/register", function(req,res){
     res.render("regist");
 });
 
 app.post("/register", function(req,res){
-    console.log(req.body);
     var newUser = new User({
         Name: req.body.username,
         Surname : req.boby.name2,
@@ -129,7 +136,6 @@ app.post("/register", function(req,res){
         //Gender: 
     });
     User.register(newUser, req.body.password, function(err,user){
-        console.log(user);
         if(err){
             console.log(err);
             return res.render("regist");
@@ -144,7 +150,6 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", function(req,res, next){
-    console.log(req.body);
     passport.authenticate("local",function(err,user,info){
         if(err){
             console.log(err);
@@ -154,9 +159,13 @@ app.post("/login", function(req,res, next){
             console.log("Пользователь не найдет");
             return res.redirect("/login");
         }
-        console.log("Код успешен");
-        return res.redirect("/portal");
-        
+        req.logIn(user, function(err) {
+            if (err) { 
+                return next(err); 
+            }
+            //console.log("Код успешен");
+            return res.redirect("/portal");
+          });
     })(req,res,next);
 });
 

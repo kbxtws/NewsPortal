@@ -60,8 +60,8 @@ var mongoose = require("mongoose");
                                 if(err){
                                  console.log(err);
                                 } else {
-                                Article.comments = [comment];
-                                //Article.save();
+                                Article.comments.push(comment);
+                                Article.save();
                                 console.log("Добавлен кооментарий");
                             }
                         });

@@ -1,6 +1,5 @@
 <%- include ('partials/header') -%>
 
-
     <div class="ui main text container segment">
         <div class="ui huge header"><%= article.title %></div>
         <div class="ui top attacheed segment">
@@ -10,11 +9,13 @@
         </div>
         <div class="description">
             <h3><%= article.body%></h3> 
+            
     <a href="/news/<%= article._id %>/comments/new" class="big ui button green inverted"> Оставить отзыв</a>
         </div >
+        <h1>sdxftgyujkjhgf</h1>
         <% article.comments.forEach(function(comment){ %>
             <p>
-                <strong><%= comment.auther %></strong> - <% comments.text %> 
+                <strong><%= comment.auther.username %></strong> - <% comments.text %> 
             </p>
        <% }) %>
     </div>  

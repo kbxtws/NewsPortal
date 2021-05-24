@@ -14,12 +14,13 @@
                    <div class="header item"><i class="newspaper icon"></i> Новостной портал </div>
                 </div>
                     <a href="/" class="item">Главная страница</a>
-                    
+                    <% if(!currentUser) { %>
                         <a href="/portal/" class="item">Home</a>
                         <a href="/login" class="item" id="LogInbtn">Войти</a>
-                 
-                        <a href="/logout" class="item" id="LogOutbtn">Exit</a>
-                   
+                 <% } else { %>
+                        <a href="#">Xenia <%currentUser.username %></a>
+                        <a href="/logout" class="item" id="LogOutbtn">Выйти</a>
+                   <% }  %>
             </div>
        </nav>
 <div class="content">

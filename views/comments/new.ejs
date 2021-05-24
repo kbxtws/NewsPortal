@@ -3,15 +3,15 @@
 <div class="ui container segment">
     <div class="row">
         <h1 class="header">Оставить свой комментарий </h1>
-            <form action="/news/<%= article._id %>/comments" method="POST">
+            <form action="/news/<%= article._id %>/comments" method="POST" class="ui segment">
                 <div class="form-group">
                     <input type="text" class="form-control" name="comment[text]" placeholder="text">
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <input type="textclass=" class= "form-control" name="comment[author]" placeholder="author">
-                </div>
-                <div class="form-group">
-                    <button class=" btn btn-lg btn-primary btn-block">Опубликовать</button>
+                </div>-->
+                <div class="form-group centered">
+                    <button class=" btn btn-lg btn-primary btn-block ">Опубликовать</button>
                 </div>
             </form>
         </div>
